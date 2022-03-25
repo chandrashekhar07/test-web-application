@@ -4,7 +4,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommonModule } from './common';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionsFilter } from './common/security';
-import { configProvider } from './common/provider';
 import { CountryModule } from './country/country.module';
 import { ProductModule } from './product/product.module';
 import { SalesModule } from './sales/sales.module';
