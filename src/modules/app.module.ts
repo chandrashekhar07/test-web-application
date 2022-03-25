@@ -16,9 +16,9 @@ import { TaskModule } from './task/task.module';
         TypeOrmModule.forRoot({
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             type: 'sqlite' as any,
-            database: configProvider.useFactory().DATABASE_NAME,
-            synchronize: configProvider.useFactory().DATABASE_SYNCHRONIZE,
-            entities: [configProvider.useFactory().DATABASE_ENTITIES]
+            database: 'test.db',
+            synchronize: true,
+            entities: ['dist/**/*.entity.js']
         }),
         CommonModule,
         CountryModule,
