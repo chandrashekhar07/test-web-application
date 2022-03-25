@@ -5,6 +5,6 @@ export class WelcomeController {
     @Get()
     @HttpCode(HttpStatus.OK)
     public login(): string {
-        return 'Welcome Build Version : 0.0';
+        return 'Welcome Build Version : 0.1';
     }
 }
