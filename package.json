@@ -13,7 +13,8 @@
         "dev": "env-cmd -f .env nodemon",
         "build": "npm run clean && tsc && cp package.json dist/package.json",
         "eslint": "./node_modules/.bin/eslint 'src/**/*.ts'",
-        "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write"
+        "prettier-format": "prettier --config .prettierrc 'src/**/*.ts' --write",
+        "prod": "node dist/server.js"
     },
     "dependencies": {
         "@hapi/joi": "^17.1.1",
