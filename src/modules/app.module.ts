@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CommonModule } from './common';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionsFilter } from './common/security';
+import { configProvider } from './common/provider';
 import { CountryModule } from './country/country.module';
 import { ProductModule } from './product/product.module';
 import { SalesModule } from './sales/sales.module';
@@ -15,9 +16,9 @@ import { TaskModule } from './task/task.module';
         TypeOrmModule.forRoot({
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             type: 'sqlite' as any,
-            database: 'test.db',
-            synchronize: true,
-            entities: ['dist/**/*.entity.js']
+            database: configProvider.useFactory().DATABASE_NAME,
+            synchronize: configProvider.useFactory().DATABASE_SYNCHRONIZE,
+            entities: [configProvider.useFactory().DATABASE_ENTITIES]
         }),
         CommonModule,
         CountryModule,
