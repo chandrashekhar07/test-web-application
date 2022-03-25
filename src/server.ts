@@ -30,9 +30,7 @@ async function bootstrap(): Promise<void> {
     app.useGlobalInterceptors(logInterceptor);
 
     await app
-        .listen(
-            process.env.PORT || configProvider.useFactory().API_PORT || API_DEFAULT_PORT
-        )
+        .listen(configProvider.useFactory().API_PORT || API_DEFAULT_PORT)
         .then(() => {
             // eslint-disable-next-line no-console
             console.log(`Server is running on: ${app.getUrl()}`);
