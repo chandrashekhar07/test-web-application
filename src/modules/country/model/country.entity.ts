@@ -4,9 +4,9 @@ import { SalesEntity } from '../../sales/model/sales.entity';
 
 @Entity('country')
 export class CountryEntity extends BaseEntity {
-    @Column({ nullable: false, length: 50 })
-    name: string;
+  @Column({ nullable: false, length: 50 })
+  name: string;
 
-    @OneToMany(() => SalesEntity, (sales) => sales.country)
-    sales: SalesEntity[];
+  @OneToMany(() => SalesEntity, (sales) => sales.country)
+  sales: SalesEntity[];
 }

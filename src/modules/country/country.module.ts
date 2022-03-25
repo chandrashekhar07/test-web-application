@@ -6,9 +6,9 @@ import { CountryEntity } from './model/country.entity';
 import { CountryService } from './service/country.service';
 
 @Module({
-    imports: [CommonModule, TypeOrmModule.forFeature([CountryEntity])],
-    controllers: [CountryController],
-    providers: [CountryService],
-    exports: [CountryService]
+  imports: [CommonModule, TypeOrmModule.forFeature([CountryEntity])],
+  controllers: [CountryController],
+  providers: [CountryService],
+  exports: [CountryService]
 })
 export class CountryModule {}
