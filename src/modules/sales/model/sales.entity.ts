@@ -5,15 +5,15 @@ import { ProductEntity } from '../../product/model/product.entity';
 
 @Entity('sales')
 export class SalesEntity extends BaseEntity {
-    @ManyToOne(() => CountryEntity, (country) => country.sales, { eager: true })
-    country: CountryEntity;
+  @ManyToOne(() => CountryEntity, (country) => country.sales, { eager: true })
+  country: CountryEntity;
 
-    @Column({ nullable: false })
-    year: number;
+  @Column({ nullable: false })
+  year: number;
 
-    @ManyToOne(() => ProductEntity, (product) => product.sales, { eager: true })
-    product: ProductEntity;
+  @ManyToOne(() => ProductEntity, (product) => product.sales, { eager: true })
+  product: ProductEntity;
 
-    @Column({ nullable: false })
-    sale: number;
+  @Column({ nullable: false })
+  sale: number;
 }

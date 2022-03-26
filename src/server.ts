@@ -15,40 +15,38 @@ const SWAGGER_DESCRIPTION = 'API for test';
 const SWAGGER_PREFIX = '/docs';
 
 async function bootstrap(): Promise<void> {
-    const app = await NestFactory.create(ApplicationModule);
+  const app = await NestFactory.create(ApplicationModule);
 
-    app.setGlobalPrefix(configProvider.useFactory().API_PREFIX || API_DEFAULT_PREFIX);
+  app.setGlobalPrefix(configProvider.useFactory().API_PREFIX || API_DEFAULT_PREFIX);
 
-    if (configProvider.useFactory().SWAGGER_ENABLE === 1) {
-        createSwagger(app);
-    }
+  if (configProvider.useFactory().SWAGGER_ENABLE === 1) {
+    createSwagger(app);
+  }
 
-    app.use(bodyParser.json());
-    app.use(helmet());
+  app.use(bodyParser.json());
+  app.use(helmet());
 
-    const logInterceptor = app.select(CommonModule).get(LogInterceptor);
-    app.useGlobalInterceptors(logInterceptor);
+  const logInterceptor = app.select(CommonModule).get(LogInterceptor);
+  app.useGlobalInterceptors(logInterceptor);
 
-    await app
-        .listen(
-            process.env.PORT || configProvider.useFactory().API_PORT || API_DEFAULT_PORT
-        )
-        .then(async () => {
-            // eslint-disable-next-line no-console
-            console.log(`Server is running on: ${await app.getUrl()}`);
-        });
+  await app
+    .listen(process.env.PORT || configProvider.useFactory().API_PORT || API_DEFAULT_PORT)
+    .then(async () => {
+      // eslint-disable-next-line no-console
+      console.log(`Server is running on: ${await app.getUrl()}`);
+    });
 }
 
 function createSwagger(app: INestApplication) {
-    const version = process.env.npm_package_version || ' ';
-    const options = new DocumentBuilder()
-        .setTitle(SWAGGER_TITLE)
-        .setDescription(SWAGGER_DESCRIPTION)
-        .setVersion(version)
-        .build();
+  const version = process.env.npm_package_version || ' ';
+  const options = new DocumentBuilder()
+    .setTitle(SWAGGER_TITLE)
+    .setDescription(SWAGGER_DESCRIPTION)
+    .setVersion(version)
+    .build();
 
-    const document = SwaggerModule.createDocument(app, options);
-    SwaggerModule.setup(SWAGGER_PREFIX, app, document);
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup(SWAGGER_PREFIX, app, document);
 }
 
 // eslint-disable-next-line no-console

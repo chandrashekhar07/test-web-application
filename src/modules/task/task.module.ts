@@ -8,8 +8,8 @@ import { ImportDataService } from './service/import-data.service';
 import { TasksService } from './service/tasks.service';
 
 @Module({
-    imports: [CommonModule, ProductModule, CountryModule, SalesModule],
-    controllers: [TaskController],
-    providers: [ImportDataService, TasksService]
+  imports: [CommonModule, ProductModule, CountryModule, SalesModule],
+  controllers: [TaskController],
+  providers: [ImportDataService, TasksService]
 })
 export class TaskModule {}

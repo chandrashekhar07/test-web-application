@@ -6,9 +6,9 @@ import { SalesEntity } from './model/sales.entity';
 import { SalesService } from './service/sales.service';
 
 @Module({
-    imports: [CommonModule, TypeOrmModule.forFeature([SalesEntity])],
-    controllers: [SalesController],
-    providers: [SalesService],
-    exports: [SalesService]
+  imports: [CommonModule, TypeOrmModule.forFeature([SalesEntity])],
+  controllers: [SalesController],
+  providers: [SalesService],
+  exports: [SalesService]
 })
 export class SalesModule {}
